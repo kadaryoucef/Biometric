@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>مكتب رخصة السياقة</title>
+	<style>
+		:root {
+			--primary-color: #e63946;
+			--secondary-color: #457b9d;
+			--background-color: #f1faee;
+			--text-color: #1d3557;
+		}
+
+		body {
+			font-family: 'Arial', sans-serif;
+			margin: 0;
+			padding: 20px;
+			background-color: var(--background-color);
+		}
+
+		.header {
+			background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+			color: white;
+			padding: 20px;
+			text-align: center;
+			border-radius: 10px;
+			margin-bottom: 30px;
+		}
+
+		.form-container {
+			background: white;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+			max-width: 800px;
+			margin: 0 auto;
+		}
+
+		.form-group {
+			margin-bottom: 20px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 5px;
+			color: var(--text-color);
+			font-weight: bold;
+		}
+
+		input, select {
+			width: 100%;
+			padding: 10px;
+			border: 2px solid #ddd;
+			border-radius: 5px;
+			font-size: 16px;
+		}
+
+		input:focus, select:focus {
+			outline: none;
+			border-color: var(--primary-color);
+		}
+
+		.buttons {
+			display: flex;
+			gap: 10px;
+			justify-content: center;
+			margin-top: 20px;
+		}
+
+		button {
+			background-color: var(--primary-color);
+			color: white;
+			padding: 12px 24px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+			transition: transform 0.2s;
+		}
+
+		button:hover {
+			transform: translateY(-2px);
+		}
+
+		.required::after {
+			content: " *";
+			color: var(--primary-color);
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<h1>مكتب رخصة السياقة</h1>
+		<p>خدمات رخصة السياقة البيومترية</p>
+	</div>
+
+	<div class="form-container">
+		<form id="drivingLicenseForm" onsubmit="return handleSubmit(event)">
+			<div class="form-group">
+				<label class="required">نوع الطلب</label>
+				<select required>
+					<option value="">اختر نوع الطلب</option>
+					<option value="new">رخصة جديدة</option>
+					<option value="renew">تجديد الرخصة</option>
+					<option value="duplicate">نسخة ثانية</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label class="required">الاسم</label>
+				<input type="text" required>
+			</div>
+
+			<div class="form-group">
+				<label class="required">اللقب</label>
+				<input type="text" required>
+			</div>
+
+			<div class="form-group">
+				<label class="required">تاريخ الميلاد</label>
+				<input type="date" required>
+			</div>
+
+			<div class="form-group">
+				<label class="required">مكان الميلاد</label>
+				<input type="text" required>
+			</div>
+
+			<div class="form-group">
+				<label class="required">العنوان</label>
+				<input type="text" required>
+			</div>
+
+			<div class="form-group">
+				<label class="required">رقم الهاتف</label>
+				<input type="tel" required>
+			</div>
+
+			<div class="form-group">
+				<label class="required">صنف الرخصة</label>
+				<select required>
+					<option value="">اختر الصنف</option>
+					<option value="A">A - دراجات نارية</option>
+					<option value="B">B - سيارات خفيفة</option>
+					<option value="C">C - شاحنات</option>
+					<option value="D">D - حافلات</option>
+				</select>
+			</div>
+
+			<div class="buttons">
+				<button type="submit">تقديم الطلب</button>
+				<button type="button" onclick="window.location.href='tast1.html'">رجوع</button>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		function handleSubmit(event) {
+			event.preventDefault();
+			alert('تم تقديم الطلب بنجاح');
+			return false;
+		}
+	</script>
+</body>
+</html>

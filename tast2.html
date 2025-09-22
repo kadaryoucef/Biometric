@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استمارة تعهد</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        .form-container {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+        .form-title {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            width: 30%;
+            text-align: right;
+            padding: 5px;
+        }
+        .form-group input {
+            width: 65%;
+            padding: 5px;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .buttons button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>الجمهورية الجزائرية الديمقراطية الشعبية</h1>
+        <h2>وزارة الداخلية والجماعات المحلية و التهيئة العمرانية</h2>
+        <h3>الوثائق البيومترية</h3>
+        <h4>جواز السفر، بطاقة التعريف و رخصة السياقة</h4>
+    </div>
+    <div class="form-container">
+        <div class="form-title">
+            <h2>استمارة تعهد</h2>
+        </div>
+        <div class="form-group">
+            <label for="name">الاسم</label>
+            <input type="text" id="name">
+        </div>
+        <div class="form-group">
+            <label for="surname">اللقب</label>
+            <input type="text" id="surname">
+        </div>
+        <div class="form-group">
+            <label for="dob">تاريخ الميلاد</label>
+            <input type="text" id="dob">
+        </div>
+        <div class="form-group">
+            <label for="birthplace">مكان الازدياد</label>
+            <input type="text" id="birthplace">
+        </div>
+        <div class="form-group">
+            <label for="commune">بلدية</label>
+            <input type="text" id="commune">
+        </div>
+        <div class="form-group">
+            <label for="wilaya">ولاية</label>
+            <input type="text" id="wilaya">
+        </div>
+        <div class="form-group">
+            <label for="address">العنوان</label>
+            <input type="text" id="address">
+        </div>
+        <div class="form-group">
+            <label for="reason">سبب التعهد</label>
+            <input type="text" id="reason">
+        </div>
+        <div class="buttons">
+            <button>تأكيد</button>
+            <button>طبع استمارة تعهد</button>
+        </div>
+    </div>
+</body>
+</html>

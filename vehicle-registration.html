@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>مكتب تسجيل المركبات</title>
+	<style>
+		:root {
+			--primary-color: #e9c46a;
+			--secondary-color: #f4a261;
+			--background-color: #f1faee;
+			--text-color: #1d3557;
+		}
+
+		body {
+			font-family: 'Arial', sans-serif;
+			margin: 0;
+			padding: 20px;
+			background-color: var(--background-color);
+		}
+
+		.header {
+			background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+			color: var(--text-color);
+			padding: 20px;
+			text-align: center;
+			border-radius: 10px;
+			margin-bottom: 30px;
+		}
+
+		.form-container {
+			background: white;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+			max-width: 800px;
+			margin: 0 auto;
+		}
+
+		.form-section {
+			border-bottom: 2px solid #eee;
+			padding: 20px 0;
+			margin-bottom: 20px;
+		}
+
+		.form-section:last-child {
+			border-bottom: none;
+		}
+
+		.form-section h2 {
+			color: var(--primary-color);
+			margin-top: 0;
+		}
+
+		.grid-2 {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 20px;
+		}
+
+		@media (max-width: 768px) {
+			.grid-2 {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		.form-group {
+			margin-bottom: 20px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 5px;
+			color: var(--text-color);
+			font-weight: bold;
+		}
+
+		input, select {
+			width: 100%;
+			padding: 10px;
+			border: 2px solid #ddd;
+			border-radius: 5px;
+			font-size: 16px;
+		}
+
+		input:focus, select:focus {
+			outline: none;
+			border-color: var(--primary-color);
+		}
+
+		.buttons {
+			display: flex;
+			gap: 10px;
+			justify-content: center;
+			margin-top: 20px;
+		}
+
+		button {
+			background-color: var(--primary-color);
+			color: var(--text-color);
+			padding: 12px 24px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+			transition: transform 0.2s;
+		}
+
+		button:hover {
+			transform: translateY(-2px);
+		}
+
+		.required::after {
+			content: " *";
+			color: #e63946;
+		}
+
+		.upload-box {
+			border: 2px dashed var(--primary-color);
+			padding: 20px;
+			text-align: center;
+			margin-bottom: 20px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.upload-box:hover {
+			background-color: #f8f9fa;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<h1>مكتب تسجيل المركبات</h1>
+		<p>خدمات تسجيل وتجديد المركبات</p>
+	</div>
+
+	<div class="form-container">
+		<form id="vehicleForm" onsubmit="return handleSubmit(event)">
+			<div class="form-section">
+				<h2>معلومات المركبة</h2>
+				<div class="grid-2">
+					<div class="form-group">
+						<label class="required">نوع المركبة</label>
+						<select required>
+							<option value="">اختر النوع</option>
+							<option value="car">سيارة</option>
+							<option value="truck">شاحنة</option>
+							<option value="motorcycle">دراجة نارية</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="required">سنة الصنع</label>
+						<input type="number" min="1900" max="2024" required>
+					</div>
+				</div>
+				<div class="grid-2">
+					<div class="form-group">
+						<label class="required">الماركة</label>
+						<input type="text" required>
+					</div>
+					<div class="form-group">
+						<label class="required">الموديل</label>
+						<input type="text" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="required">رقم الهيكل (VIN)</label>
+					<input type="text" required pattern="[A-HJ-NPR-Z0-9]{17}" title="يجب أن يتكون من 17 حرف ورقم">
+				</div>
+			</div>
+
+			<div class="form-section">
+				<h2>معلومات المالك</h2>
+				<div class="grid-2">
+					<div class="form-group">
+						<label class="required">الاسم</label>
+						<input type="text" required>
+					</div>
+					<div class="form-group">
+						<label class="required">اللقب</label>
+						<input type="text" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="required">رقم الهوية</label>
+					<input type="text" required>
+				</div>
+				<div class="form-group">
+					<label class="required">العنوان</label>
+					<input type="text" required>
+				</div>
+			</div>
+
+			<div class="form-section">
+				<h2>المستندات المطلوبة</h2>
+				<div class="form-group">
+					<label class="required">الفحص التقني</label>
+					<div class="upload-box" onclick="document.getElementById('technical').click()">
+						انقر لتحميل شهادة الفحص التقني
+						<input type="file" id="technical" accept=".pdf,.jpg,.png" style="display: none" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="required">التأمين</label>
+					<div class="upload-box" onclick="document.getElementById('insurance').click()">
+						انقر لتحميل وثيقة التأمين
+						<input type="file" id="insurance" accept=".pdf,.jpg,.png" style="display: none" required>
+					</div>
+				</div>
+			</div>
+
+			<div class="buttons">
+				<button type="submit">تقديم الطلب</button>
+				<button type="button" onclick="window.location.href='tast1.html'">رجوع</button>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		function handleSubmit(event) {
+			event.preventDefault();
+			alert('تم تقديم الطلب بنجاح');
+			return false;
+		}
+	</script>
+</body>
+</html>
